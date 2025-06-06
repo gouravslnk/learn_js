@@ -74,7 +74,7 @@ console.log(typeof anotherId);
 
 
 
-//***********************Stack and Heap Memory In JavaScript *******************************/
+//*********************** Stack and Heap Memory In JavaScript *******************************/
 
 // Stack Memory: Stores primitive data types (String, Number, Boolean, null, undefined, Symbol, BigInt) and references to objects.
 

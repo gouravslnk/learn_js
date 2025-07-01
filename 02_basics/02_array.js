@@ -1,69 +1,106 @@
-const marvel_heros = ["thor", "Ironman", "spiderman"]
-const dc_heros = ["superman", "flash", "batman"]
+// ================================
+// 💡 Array Operations - Part 2
+// ================================
 
-//marvel_heros.push(dc_heros) // this will add the dc_heros array as a single element to the marvel_heros array
 
-// console.log(marvel_heros);
-// console.log(marvel_heros[3][1]);
+// ================================
+// 🔗 Combining Arrays
+// ================================
 
-const allHeros = marvel_heros.concat(dc_heros) // this will concatenate the two arrays and return a new array
+const marvel_heros = ["Thor", "Ironman", "Spiderman"];
+const dc_heros = ["Superman", "Flash", "Batman"];
+
+// 👉 Push an array into another (nested array)
+marvel_heros.push(dc_heros);
+console.log(marvel_heros);            // ['Thor', 'Ironman', 'Spiderman', ['Superman', 'Flash', 'Batman']]
+console.log(marvel_heros[3][1]);      // Access 'Flash'
+
+// 👉 Reset array
+marvel_heros.pop();
+
+// 👉 Concatenate arrays (returns new array)
+const allHeros = marvel_heros.concat(dc_heros);
 console.log(allHeros);
-console.log('\n')
 
-const all_new_heros = [...marvel_heros, ...dc_heros] // this will spread the two arrays and return a new array
-console.log("all_new_heros " + all_new_heros);
-console.log('\n')
-
-
-const another_array = [1, 2, 3, [4, 5, 6], 7, [6, 7, [4, 5]]]
-console.log(another_array);
-console.log('\n')
-
-const another_arrayy = [1, 2, 3, [4, 5, 6], 7, [6, 7, [4, 5]]]
-const another_arrayyy = [1, 2, 3, [4, 5, 6], 7, [6, 7, [4, 5]]]
-
-const final_array = [...another_arrayy, ...another_arrayyy] // this will spread the two arrays and return a new array
-console.log(final_array);
-console.log('\n')
-
-const real_array = final_array.flat() // this will flatten the array to a single level
-console.log(real_array);
-console.log('\n')
-
-const real_another_array = real_array.flat(Infinity) // this will flatten the array to a single level, Infinity means it will flatten all levels
-console.log(real_another_array);
+// 👉 Spread operator (preferred modern method)
+const all_new_heros = [...marvel_heros, ...dc_heros];
+console.log("All New Heros:", all_new_heros);
 
 
+// ================================
+// 🔥 Flatten Nested Arrays
+// ================================
 
-console.log(Array.isArray("Hitesh"))
-console.log(Array.from("Hitesh"))
-console.log(Array.from({name: "hitesh"})) // interesting -> this will create an array with a single element which is the object itself
+const another_array = [1, 2, 3, [4, 5, 6], 7, [8, 9, [10, 11]]];
 
-// Array.from() creates an array from iterable or array-like objects (must have a length or be iterable).
+console.log("Original Array:", another_array);
 
-Array.from("abc");              // ['a', 'b', 'c']
-Array.from({ length: 3 });      // [undefined, undefined, undefined]
-Array.from({ length: 3 }, (_, i) => i); // [0, 1, 2]
-console.log(Array.from({length: 5}, (_, i) => i + 1)) // this will create an array with numbers from 1 to 5
+// 👉 flat() — Flattens nested array one level deep
+const flat_array = another_array.flat();
+console.log("Flat Array (1 level):", flat_array);
 
-// ❌ Invalid use:
-Array.from({ name: "hitesh" }); // ❌ Error: object is not iterable
-
-// ✅ To convert object to array:
-Object.keys({ name: "hitesh" });    // ['name']
-Object.values({ name: "hitesh" });  // ['hitesh']
-Object.entries({ name: "hitesh" }); // [['name', 'hitesh']]
+// 👉 flat(Infinity) — Fully flattens any depth
+const fully_flat_array = another_array.flat(Infinity);
+console.log("Fully Flat Array:", fully_flat_array);
 
 
+// ================================
+// 🔍 Array Check & Conversion
+// ================================
+
+// 👉 Check if it is an array
+console.log(Array.isArray("John"));      // false
+
+// 👉 Convert string to array
+console.log(Array.from("John"));         // ['J', 'o', 'h', 'n']
+
+// 👉 Convert object to array (invalid)
+console.log(Array.from({ name: "John" }));  // [] — because it's not iterable
+
+// ✅ Correct way to convert object keys/values/entries to array
+console.log(Object.keys({ name: "John" }));    // ['name']
+console.log(Object.values({ name: "John" }));  // ['John']
+console.log(Object.entries({ name: "John" })); // [['name', 'John']]
 
 
-console.log('\n')
+// ================================
+// 🚀 Array.from() Examples
+// ================================
 
-let score1 = [100, 150, 250]
-let score2 = 200
-let score3 = 300
+// 👉 Create array from length
+console.log(Array.from({ length: 3 }));                    // [undefined, undefined, undefined]
 
-console.log(Array.of(score1, score2, score3).flat(1)) // this will create an array with the elements of score1, score2, score3 and flatten it to a single level;
+// 👉 Create array with values from 0 to 2
+console.log(Array.from({ length: 3 }, (_, i) => i));       // [0, 1, 2]
+
+// 👉 Create array with values from 1 to 5
+console.log(Array.from({ length: 5 }, (_, i) => i + 1));   // [1, 2, 3, 4, 5]
 
 
+// ================================
+// 🔗 Array.of() Example
+// ================================
 
+let score1 = [100, 150, 250];
+let score2 = 200;
+let score3 = 300;
+
+// 👉 Array.of() creates an array from arguments, NOT like concat
+const mixedScores = Array.of(score1, score2, score3);
+console.log("Mixed Scores:", mixedScores);        // [[100,150,250], 200, 300]
+
+// 👉 Flatten it (if needed)
+console.log("Flattened Mixed Scores:", mixedScores.flat());
+
+
+// ================================
+// ✅ Summary Cheatsheet
+// ================================
+// - push()       -> Adds to end (can nest an array)
+// - concat()     -> Combines arrays, returns new
+// - ...spread    -> Combines arrays, modern and clean
+// - flat()       -> Flattens nested arrays
+// - Array.isArray() -> Checks if value is array
+// - Array.from() -> Creates array from iterable or object with length
+// - Array.of()   -> Creates array from arguments
+// - Object.keys()/values()/entries() -> Convert object to array

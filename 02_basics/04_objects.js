@@ -1,82 +1,151 @@
-// const tinderUser = new Object()
-const tinderUser = {}
+// ================================
+// 💡 Objects in JavaScript - Part 2
+// ================================
 
-tinderUser.id = "123abc"
-tinderUser.name = "Sammy"
-tinderUser.isLoggedIn = false
+
+// ================================
+// 🏗️ Create Objects
+// ================================
+
+// 👉 Singleton object
+const tinderUser = new Object();  // ✅ Singleton object
+
+// 👉 Non-singleton object (Object Literal)
+const tinderUser2 = {};           // ❌ Non-singleton object
+
+
+// ================================
+// 🔗 Add Properties to Object
+// ================================
+
+tinderUser.id = "123abc";
+tinderUser.name = "John Doe";
+tinderUser.isLoggedIn = false;
 
 // console.log(tinderUser);
 
+
+// ================================
+// 🎯 Nested Objects
+// ================================
+
 const regularUser = {
-    email: "some@gmail.com",
+    email: "johndoe@gmail.com",
     fullname: {
         userfullname: {
-            firstname: "hitesh",
-            lastname: "choudhary"
+            firstname: "John",
+            lastname: "Doe"
         }
     }
-}
+};
 
-// console.log(regularUser.fullname.userfullname.firstname);
+// 👉 Access nested values
+console.log(regularUser.fullname.userfullname.firstname);
 
-const obj1 = {1: "a", 2: "b"}
-const obj2 = {3: "a", 4: "b"}
-const obj4 = {5: "a", 6: "b"}
 
-// const obj3 = { obj1, obj2 }
-// const obj3 = Object.assign({}, obj1, obj2, obj4)
+// ================================
+// 🔥 Combine Objects
+// ================================
 
-const obj3 = {...obj1, ...obj2}
-// console.log(obj3);
+const obj1 = { 1: "a", 2: "b" };
+const obj2 = { 3: "c", 4: "d" };
+const obj3 = { 5: "e", 6: "f" };
 
+// 👉 Method 1: Using Object.assign()
+// Syntax: Object.assign(target, source1, source2, ...)
+const combined1 = Object.assign({}, obj1, obj2, obj3);
+
+// 👉 Method 2: Using Spread Operator (modern and preferred)
+const combined2 = { ...obj1, ...obj2, ...obj3 };
+
+console.log(combined1);
+console.log(combined2);
+
+
+// ================================
+// 📦 Array of Objects (Common in APIs)
+// ================================
 
 const users = [
     {
         id: 1,
-        email: "h@gmail.com"
+        email: "john@gmail.com"
     },
     {
-        id: 1,
-        email: "h@gmail.com"
+        id: 2,
+        email: "jane@gmail.com"
     },
     {
-        id: 1,
-        email: "h@gmail.com"
+        id: 3,
+        email: "doe@gmail.com"
     },
-]
+];
 
-users[1].email
-// console.log(tinderUser);
+// 👉 Access email of second user
+console.log(users[1].email);
 
-// console.log(Object.keys(tinderUser));
-// console.log(Object.values(tinderUser));
-// console.log(Object.entries(tinderUser));
 
-// console.log(tinderUser.hasOwnProperty('isLoggedIn'));
+// ================================
+// 🔍 Useful Object Methods
+// ================================
 
+// 👉 Get all keys as an array
+console.log(Object.keys(tinderUser));
+
+// 👉 Get all values as an array
+console.log(Object.values(tinderUser));
+
+// 👉 Get all key-value pairs as nested arrays
+console.log(Object.entries(tinderUser));
+
+// 👉 Check if a property exists in object
+console.log(tinderUser.hasOwnProperty('isLoggedIn'));  // true
+
+
+// ================================
+// 🚀 Destructuring Objects
+// ================================
 
 const course = {
-    coursename: "js in hindi",
+    coursename: "JavaScript in Hindi",
     price: "999",
-    courseInstructor: "hitesh"
-}
+    courseInstructor: "Jane Doe"
+};
 
-// course.courseInstructor
+course.courseInstructor  // one method
 
-const {courseInstructor: instructor} = course
+// 👉 Destructure
+const { courseInstructor: instructor } = course;
 
-// console.log(courseInstructor);
-console.log(instructor);
+// console.log(course.courseInstructor);
+console.log(instructor);  // Output: Jane Doe
 
+
+// ================================
+// 🔥 JSON Structure Examples
+// ================================
+
+// 👉 JSON Object Example
 // {
-//     "name": "hitesh",
-//     "coursename": "js in hindi",
+//     "name": "John Doe",
+//     "coursename": "JavaScript in Hindi",
 //     "price": "free"
 // }
 
-[
-    {},
-    {},
-    {}
-]
+// 👉 JSON Array (API) of Objects Example
+// [
+//     {},
+//     {},
+//     {}
+// ]
 
+
+// ================================
+// ✅ Extra Tips:
+// ================================
+// - Spread (...) is preferred over Object.assign() because it's shorter and cleaner.
+// - hasOwnProperty() checks if property exists directly on object (not inherited).
+// - Object.keys(), Object.values(), Object.entries() are super useful for loops or data manipulation.
+// - JSON data looks like object but is always a string when coming from an API.
+//   Use JSON.parse() to convert JSON string to object.
+//   Use JSON.stringify() to convert object to JSON string.

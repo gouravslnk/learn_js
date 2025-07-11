@@ -1,0 +1,92 @@
+/* Reset default margins and apply basic font */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #212121, #2e2e2e);
+  color: #f1f1f1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  background-color: #333;
+  padding: 30px 40px;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  max-width: 400px;
+  width: 100%;
+}
+
+.main-heading {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #00ffcc;
+}
+
+.form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.form input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  outline: none;
+}
+
+.form button {
+  width: 100%;
+  padding: 12px;
+  background-color: #00ffcc;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: #212121;
+  transition: 0.3s ease;
+}
+
+.form button:hover {
+  background-color: #02d0a7;
+}
+
+#result {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-top: 20px;
+  color: #ffd700;
+}
+
+#weight-guide {
+  margin-top: 30px;
+  background-color: #444;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+#weight-guide h3 {
+  color: #00ffcc;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+#weight-guide p {
+  margin: 6px 0;
+  font-size: 0.95rem;
+  text-align: center;
+}

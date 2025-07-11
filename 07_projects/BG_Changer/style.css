@@ -1,0 +1,84 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #212121;
+  color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  transition: background-color 0.4s ease;
+}
+
+.canvas {
+  text-align: center;
+  max-width: 800px;
+  width: 100%;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: black;
+}
+
+h2 {
+  margin-top: 40px;
+  font-weight: normal;
+  font-size: 1.2rem;
+  color: black;
+}
+
+span.button {
+  margin: 10px;
+  display: inline-block;
+}
+
+/* Base button styles */
+.all-buttons {
+  width: 90px;
+  height: 90px;
+  border: 3px solid #ffffff;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* On hover effects */
+.all-buttons:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+}
+
+/* Individual button colors */
+#grey {
+  background-color: grey;
+}
+
+#white {
+  background-color: white;
+  border: 3px solid #ccc;
+}
+
+#blue {
+  background-color: steelblue;
+}
+
+#yellow {
+  background-color: gold;
+}
+
+#red {
+  background-color: crimson;
+}
+
+#green {
+  background-color: mediumseagreen;
+}

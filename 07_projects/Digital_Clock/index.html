@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="clock-container">
+      <div class="digital-effects"></div>
+      <div id="banner">Digital Clock</div>
+      <div id="date"></div>
+      <div id="clock"></div>
+      <div id="seconds"></div>
+      
+      <div class="controls">
+        <button class="btn active" id="format-btn" onclick="toggleFormat()">24 Hour</button>
+        <select class="timezone-select" id="timezone" onchange="changeTimezone()" title="Select Timezone">
+          <option value="local">Local Time</option>
+          <option value="UTC">UTC</option>
+          <option value="America/New_York">New York</option>
+          <option value="America/Los_Angeles">Los Angeles</option>
+          <option value="Europe/London">London</option>
+          <option value="Europe/Paris">Paris</option>
+          <option value="Asia/Tokyo">Tokyo</option>
+          <option value="Asia/Shanghai">Shanghai</option>
+          <option value="Asia/Kolkata">India</option>
+          <option value="Australia/Sydney">Sydney</option>
+        </select>
+      </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

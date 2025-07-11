@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>createElement</title>
+  <style>
+    body {
+      background-color: #212121;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+    .main {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+      border: 2px dashed white;
+    }
+  </style>
+</head>
+<body>
+</body>
+
+<script>
+  // ✅ Step 1: Create the element
+  const div = document.createElement('div');
+  console.log(div); // Check in console
+
+  // ✅ Step 2: Set attributes
+  div.className = "main";
+  div.id = Math.floor(Math.random() * 100 + 1); // Random id
+  div.setAttribute("title", "generated title");
+
+  // ✅ Step 3: Add styles
+  div.style.backgroundColor = "green";
+  div.style.padding = "12px";
+
+  // ✅ Step 4: Add text
+  // div.innerText = "Chai aur code"; // alternative way - not so efficient
+  // div.textContent = "Chai aur code"; // alternative way - not so efficient
+  // Using createTextNode for better performance
+  const addText = document.createTextNode("Chai aur code");
+  div.appendChild(addText);
+
+  // ✅ Step 5: Attach to the DOM
+  document.body.appendChild(div);
+
+  // 🧠 SUMMARY:
+  // 1. document.createElement(tagName) → creates an element
+  // 2. element.className / id / setAttribute → sets attributes
+  // 3. element.style → adds inline styles
+  // 4. document.createTextNode(text) → creates text node
+  // 5. element.appendChild(textNode) → adds text to element
+  // 6. document.body.appendChild(element) → renders on page
+</script>
+
+</html>

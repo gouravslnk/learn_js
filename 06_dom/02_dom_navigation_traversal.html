@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DOM Traversal & Relations</title>
+  <style>
+    body {
+      background-color: #212121;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="parent">
+    <div class="day">Monday</div>
+    <div class="day">Tuesday</div>
+    <div class="day">Wednesday</div>
+    <div class="day">Thursday</div>
+  </div>
+
+  <script>
+    const parent = document.querySelector('.parent');
+
+    console.log("Parent element:", parent); // this is parent class
+    // ----------------------------------------------
+    // ✅ Children - HTMLCollection of all children
+    // ----------------------------------------------
+    console.log("Children of .parent: ", parent.children); // this is HTMLCollection of all children
+    console.log("Second child innerHTML:", parent.children[1].innerHTML);
+
+    // ✅ Loop through children because parent.children.length will not give all the children so that's why we use parent.children[i]
+    console.log("Looping through children:");
+    for (let i = 0; i < parent.children.length; i++) {
+      console.log(`Child ${i}:`, parent.children[i].innerHTML);
+    }
+
+    // ✅ Styling second child
+    parent.children[1].style.color = "orange";
+
+    // ----------------------------------------------
+    // ✅ First and Last Child
+    // ----------------------------------------------
+    console.log("First child:", parent.firstElementChild); // this will give <div class="day">Monday</div>
+    console.log("Last child:", parent.lastElementChild); // this will give <div class="day">Thursday</div>
+
+    // ----------------------------------------------
+    // ✅ Navigating from a child to parent & siblings
+    // ----------------------------------------------
+    const dayOne = document.querySelector('.day'); // this will give the first .day element (Monday)
+    console.log("Selected .day:", dayOne);
+
+
+    console.log("Parent of .day:", dayOne.parentElement); // this will give the parent <div class="parent">
+    console.log("Next sibling:", dayOne.nextElementSibling);  // this will give the next .day element (Tuesday)
+    console.log("Previous sibling:", dayOne.previousElementSibling); // null for first 
+
+
+
+    // ----------------------------------------------
+    // ✅ Node-level access (includes text nodes, comments)
+    // ----------------------------------------------
+    console.log("All childNodes of .parent:", parent.childNodes); // includes comments and text (like newline) so this not only gives elements it also give text nodes, comments and enter etc.
+
+    // ----------------------------------------------
+    // ✅ Other helpful navigation
+    // ----------------------------------------------
+    // parentElement
+    // nextElementSibling
+    // previousElementSibling
+    // childNodes (includes text/comments)
+    // children (only elements)
+  </script>
+
+</body>
+</html>
+<!--
+  This HTML document demonstrates DOM traversal and navigation techniques.
+  It includes examples of accessing children, first/last elements, and navigating
+  between parent and sibling nodes.
+  The script uses console logs to display the results of various DOM operations.
+  The styles are minimal to focus on the functionality.
+  The comments in the code provide context for each operation.
+  The document is structured to be simple and educational, suitable for learning purposes.
+-->

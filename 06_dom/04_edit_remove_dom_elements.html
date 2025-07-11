@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edit and Remove DOM Elements</title>
+  <style>
+    body {
+      background-color: #212121;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+    ul.language {
+      margin-top: 20px;
+      padding-left: 20px;
+    }
+    li {
+      padding: 6px 0;
+    }
+  </style>
+</head>
+<body>
+  <ul class="language">
+    <li>Javascript</li>
+  </ul>
+</body>
+
+<script>
+  // ✅ Function to add language (less optimized - uses innerHTML)
+  function addLanguage(langName) {
+    const li = document.createElement('li');
+    li.innerHTML = `${langName}`;
+    document.querySelector('.language').appendChild(li);
+  }
+
+  addLanguage("Python");
+  addLanguage("TypeScript");
+
+  // ✅ Better way to add language (optimized - uses createTextNode)
+  function addOptiLanguage(langName) {
+    const li = document.createElement('li');
+    li.appendChild(document.createTextNode(langName));
+    document.querySelector('.language').appendChild(li);
+  }
+
+  addOptiLanguage("Golang");
+
+  // ✅ Edit - Replace 2nd <li> with "Mojo"
+  const secondLang = document.querySelector("li:nth-child(2)");
+  const newLi = document.createElement('li');
+  newLi.textContent = "Mojo";
+  secondLang.replaceWith(newLi);
+
+  // ✅ Edit - Replace first <li> using outerHTML
+  const firstLang = document.querySelector("li:first-child");
+  firstLang.outerHTML = '<li>TypeScript</li>';
+
+  // ✅ Remove - Remove last <li>
+  const lastLang = document.querySelector("li:last-child");
+  lastLang.remove();
+
+  // 🧠 Summary:
+  // - appendChild() → adds element to DOM
+  // - createTextNode() → safely adds text
+  // - replaceWith() → replaces an existing node
+  // - outerHTML → replaces entire element
+  // - .remove() → removes an element
+</script>
+
+</html>
+
+<!-- ✅ Output Behavior
+1. Starts with: Javascript
+
+2. Adds: Python, TypeScript, Golang
+
+3. Replaces:
+
+    Python → Mojo
+
+    Javascript → TypeScript
+
+4. Removes: Golang -->

@@ -1,70 +1,119 @@
+// ================================
+// 💡 Functions in JavaScript
+// ================================
 
-function sayMyName(){
+
+// ================================
+// 🔥 Basic Function Declaration
+// ================================
+
+function sayMyName() {
+    console.log("J");
+    console.log("O");
     console.log("H");
-    console.log("I");
-    console.log("T");
-    console.log("E");
-    console.log("S");
-    console.log("H");
+    console.log("N");
 }
 
-// sayMyName()
+// 👉 Call the function
+// sayMyName();
 
-// function addTwoNumbers(number1, number2){
 
-//     console.log(number1 + number2);
-// }
+// ================================
+// ➕ Function with Parameters
+// ================================
 
-function addTwoNumbers(number1, number2){
+// 👉 Function to add two numbers
+function addTwoNumbers(number1, number2) {
+    // console.log(number1 + number2);  // Just prints
 
-    // let result = number1 + number2
-    // return result
-    return number1 + number2
+    // let result = number1 + number2; 
+    // return result;                    // Best practice
+
+    return number1 + number2;            // Short and clean
 }
 
-const result = addTwoNumbers(3, 5)
+// 👉 Store result in a variable
+const result = addTwoNumbers(3, 5);
 
-// console.log("Result: ", result);
+// console.log("Result:", result);
 
 
-function loginUserMessage(username = "sam"){
-    if(!username){
-        console.log("PLease enter a username");
-        return
+// ================================
+// ✅ Function with Default Parameters and Validation
+// ================================
+
+function loginUserMessage(username = "Sam") {
+    // 👉 If username is falsy (null, undefined, empty string), show error
+    if (!username) {
+        console.log("Please enter a username");
+        return;
     }
-    return `${username} just logged in`
+    return `${username} just logged in`;
 }
 
-// console.log(loginUserMessage("hitesh"))
-// console.log(loginUserMessage("hitesh"))
+// console.log(loginUserMessage("John"));
+// console.log(loginUserMessage());
 
 
-function calculateCartPrice(val1, val2, ...num1){
-    return num1
+// ================================
+// 🚀 Function with Rest Parameters (...)
+// ================================
+
+// 👉 When you don't know how many arguments will come
+
+function calculateCartPrice(val1, val2, ...num1) {
+    // val1 = 200
+    // val2 = 400
+    // num1 = [500, 2000]
+    return num1;
 }
 
-// console.log(calculateCartPrice(200, 400, 500, 2000))
+// console.log(calculateCartPrice(200, 400, 500, 2000));
+
+
+// ================================
+// 📦 Passing Objects to Functions
+// ================================
 
 const user = {
-    username: "hitesh",
-    prices: 199
+    username: "John",
+    price: 199
+};
+
+function handleObject(anyObject) {
+    console.log(`Username is ${anyObject.username} and price is ${anyObject.price}`);
 }
 
-function handleObject(anyobject){
-    console.log(`Username is ${anyobject.username} and price is ${anyobject.price}`);
-}
+// 👉 Pass object directly or via variable
+// handleObject(user);
 
-// handleObject(user)
 handleObject({
-    username: "sam",
+    username: "Sam",
     price: 399
-})
+});
 
-const myNewArray = [200, 400, 100, 600]
 
-function returnSecondValue(getArray){
-    return getArray[1]
+// ================================
+// 🔗 Passing Arrays to Functions
+// ================================
+
+const myNewArray = [200, 400, 100, 600];
+
+function returnSecondValue(getArray) {
+    return getArray[1];   // Returns the second element (index starts from 0)
 }
 
 // console.log(returnSecondValue(myNewArray));
 console.log(returnSecondValue([200, 400, 500, 1000]));
+
+
+// ================================
+// ✅ Summary Cheatsheet
+// ================================
+// - function name() { }                 -> Function declaration
+// - function name(param1, param2) { }   -> Parameters
+// - function name(...rest) { }          -> Rest parameters (collects extra args)
+// - function name(param = default) { }  -> Default values
+// - return -> Send back data from function
+// - Functions can accept arrays, objects, numbers, strings, etc.
+// - Functions can return anything: value, string, array, object, etc.

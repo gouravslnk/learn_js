@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>02 | Async JavaScript Fundamentals</title>
+</head>
+<body style="background-color: #1e1e1e; color: #f5f5f5; font-family: monospace;">
+  <h1>🧠 Async JavaScript - Fundamentals</h1>
+
+  <h2>🔸 Blocking vs Non-Blocking Code</h2>
+  <ul>
+    <li><strong>Blocking Code</strong>: Stops execution until current task completes (e.g., <code>readFileSync()</code>)</li>
+    <li><strong>Non-Blocking Code</strong>: Executes without waiting, allowing other operations (e.g., <code>readFileAsync()</code>)</li>
+  </ul>
+
+  <h2>🔸 JavaScript Nature</h2>
+  <ul>
+    <li>Single-threaded</li>
+    <li>Synchronous by default</li>
+    <li>One line executes at a time in <strong>execution context</strong></li>
+    <li>Uses <code>Call Stack</code> and <code>Memory Heap</code></li>
+  </ul>
+
+  <h2>🔸 Important Concepts</h2>
+  <ul>
+    <li><strong>Call Stack:</strong> Where functions are pushed and popped during execution</li>
+    <li><strong>Memory Heap:</strong> Where memory is allocated for variables/objects</li>
+    <li><strong>Web APIs:</strong> Provided by the browser (like <code>setTimeout</code>, <code>fetch</code>)</li>
+    <li><strong>Callback Queue:</strong> Stores async callbacks to be executed later</li>
+    <li><strong>Microtask Queue:</strong> For promises — higher priority than callbacks</li>
+    <li><strong>Event Loop:</strong> Keeps checking call stack → if empty, pushes queued tasks</li>
+  </ul>
+
+  <h2>🧪 Code Example: setTimeout</h2>
+  <pre style="background-color: #333; padding: 1em; border-radius: 5px;"><code>
+console.log("Start");
+
+setTimeout(() => {
+    console.log("Async task complete");
+}, 2000);
+
+console.log("End");
+
+// Output:
+// Start
+// End
+// Async task complete
+  </code></pre>
+
+  <h2>🧪 Code Example: Promise</h2>
+  <pre style="background-color: #333; padding: 1em; border-radius: 5px;"><code>
+console.log("Start");
+
+Promise.resolve("Resolved Promise").then(res => console.log(res));
+
+console.log("End");
+
+// Output:
+// Start
+// End
+// Resolved Promise
+  </code></pre>
+
+  <h2>📌 Summary</h2>
+  <ul>
+    <li>JS runs in a single thread, synchronously</li>
+    <li>Async behavior comes from browser Web APIs + Event Loop</li>
+    <li>setTimeout, Promises, fetch, etc., are offloaded to Web APIs</li>
+    <li>Callback Queue vs Microtask Queue: Microtasks (promises) are given priority</li>
+    <li>Event loop checks stack and queues continuously</li>
+  </ul>
+
+  <hr>
+  <h3>🧠 Visual References Used:</h3>
+  <ol>
+    <li>Blocking vs Non-blocking</li>
+    <li>JS single-threaded execution flow</li>
+    <li>Event loop architecture: Call Stack, Web APIs, Callback Queue, Microtask Queue</li>
+  </ol>
+</body>
+</html>

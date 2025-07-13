@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>03 - setTimeout & clearTimeout</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #212121;
+      color: #fff;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 2rem;
+      color: #00b4d8;
+    }
+    button {
+      padding: 10px 20px;
+      background: crimson;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: darkred;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Changing text in 2 seconds...</h1>
+  <button id="stop">Stop</button>
+
+</body>
+<script>
+  // 🔹 Example of setTimeout (delays function execution)
+  const changeText = function () {
+    document.querySelector('h1').innerHTML = "🚀 Woo Hoo By John Doe!";
+  }
+  // 🔹 Schedule the function to run after 2s
+  const changeMe = setTimeout(changeText, 2000);
+
+  
+  // 🔸 clearTimeout: cancel the scheduled task
+  document.querySelector('#stop').addEventListener('click', function () {
+    clearTimeout(changeMe);
+    console.log("Timeout Cleared ❌");
+    document.querySelector('h1').innerHTML = "⏹️ Text change stopped!";
+  });
+
+  // ✅ Use Case:
+  // - Showing popups after delay
+  // - Lazy-loading content
+  // - Canceling animations/interactions
+</script>
+</html>

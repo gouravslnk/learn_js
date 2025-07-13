@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>04 - setInterval & clearInterval</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #212121;
+      color: #fff;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 2rem;
+      color: #00b4d8;
+    }
+    button {
+      padding: 10px 20px;
+      background: crimson;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: darkred;
+    }
+  </style>
+</head>
+<body>
+    <h1>Check Set Interval and Clear Interval</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    const sayDate = function(str){
+        console.log(str, Date.now());
+    }
+
+    // 🔹 Example of setInterval (repeatedly calls a function
+    const Id = setInterval(sayDate, 1000, "hi");
+
+    // 🔸 clearInterval: stops the repeated execution
+    clearInterval(Id, 1000, "clean");
+
+
+
+    console.log("Interval started, will log every second");
+
+
+    // Note: This will not stop the interval immediately, but you can use a button to clear it.
+    // Example of using clearInterval with buttons
+    // This will allow you to start and stop the interval with button clicks.
+
+
+
+  let intervalId;
+
+  document.getElementById('start').addEventListener('click', function () {
+    intervalId = setInterval(() => {
+      console.log("Interval running...");
+    }, 1000);
+  });
+
+  document.getElementById('stop').addEventListener('click', function () {
+    clearInterval(intervalId);
+    console.log("Interval cleared");
+  });
+</script>
+</html>

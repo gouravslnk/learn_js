@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01 | Event Basics in JS</title>
+</head>
+<body style="background-color: #414141; color: aliceblue; font-family: sans-serif;">
+    <h2>🖼️ Amazing Images Gallery</h2>
+
+    <div>
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="Photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="Japan"></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="River"></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="Owl"></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="Prayer"></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">🔗 Google</a></li>
+        </ul>
+    </div>
+
+    <p style="margin-top: 20px;">📝 Try clicking on any image to remove it, or click on the link below (but JS will prevent redirect).</p>
+</body>
+
+<script>
+    // ===============================
+    // 📘 JavaScript Event Basics
+    // ===============================
+
+    /*
+    ✅ Ways to attach events:
+    1. HTML onclick="" → ❌ Not recommended
+    2. element.onclick → Simple but limited (only one event per type)
+    3. element.addEventListener → ✅ Modern & powerful
+    */
+
+    // ✅ Example 1: Old school (not flexible)
+    // document.getElementById('owl').onclick = function () {
+    //     alert("Owl clicked");
+    // }
+
+    // ✅ Example 2: Modern method with event object
+    // Use addEventListener(type, callback, useCapture)
+
+    // Bubbling vs Capturing:
+    // - Bubbling (default) = event moves from target -> parent -> root
+    // - Capturing (set third param to true) = root -> parent -> target
+
+
+    /*=============================================================================
+    // 🔹 This shows bubbling and stopPropagation
+            stops bubbling - bubbling means the event won't go to parent elements - in simple terms, it prevents the event from triggering any parent handlers
+
+    document.getElementById('images').addEventListener('click', function (e) {
+        console.log("Clicked inside <ul> (bubbling phase)");
+    }, false);   ---- we use false for bubbling phase
+    // the 3rd parameter is false by default, so sometimes we don't write it
+
+    document.getElementById('owl').addEventListener('click', function (e) {
+        console.log("Owl clicked");
+    }, true);  
+    //so if it is true then it is in capturing mode
+
+    document.getElementById('owl').addEventListener('click', function (e) {
+        console.log("Owl clicked");
+        e.stopPropagation(); // stops event bubbling upward
+    }, false);   // so now only "Owl clicked" will be printed - "Clicked inside <ul> (bubbling phase)" this will be not printed as we used (stopPropagation)
+
+    */
+    //=============================================================================
+
+
+    document.getElementById('google').addEventListener('click', function (e) {
+        e.preventDefault(); // stops default anchor behavior
+        e.stopPropagation();
+        console.log("Google link clicked (but no redirect)");
+    }, false);
+    
+
+    // ✅ Real-world Example: Click image → remove from list
+    document.querySelector('#images').addEventListener('click', function (e) {
+        console.log("Event triggered by:", e.target.tagName);
+
+        if (e.target.tagName === 'IMG') {
+            console.log(`🗑️ Removing: ${e.target.id}`);
+            const listItem = e.target.parentNode;
+            listItem.remove(); // cleanly removes <li> element
+        }
+        // Alternate method:
+        // const listItem = e.target.parentNode;  -- as this will give us img's parent li
+        // listItem.parentNode.removeChild(listItem);  -- so here li parentNode is ul and its child is li so removeChild will remove this li.
+    });
+
+    // ✨ More useful event properties:
+    /*
+        e.type → "click"
+        e.target → The element clicked
+        e.currentTarget → Where listener is attached
+        e.clientX / clientY → Mouse position
+        e.altKey / ctrlKey / shiftKey → Modifier keys
+    */
+</script>
+
+<!-- add some examples of most used Events:
+     Most used events examples: -->
+
+    <!-- Mouse Events -->
+    <button id="btnClick">Click Me</button>
+    <button id="btnDouble">Double Click Me</button>
+    <button id="btnHover">Hover Over Me</button>
+
+    <!-- Keyboard Event -->
+    <input type="text" id="inputKey" placeholder="Type something..." />
+
+    <!-- Focus Event -->
+    <input type="text" id="inputFocus" placeholder="Focus on me..." />
+
+    <script>
+        // Click event
+        document.getElementById('btnClick').addEventListener('click', function () {
+            alert('Button clicked!');
+        });
+
+        // Double click event
+        document.getElementById('btnDouble').addEventListener('dblclick', function () {
+            alert('Button double-clicked!');
+        });
+
+        // Mouseover event
+        document.getElementById('btnHover').addEventListener('mouseover', function () {
+            this.style.backgroundColor = '#ff9800';
+        });
+        document.getElementById('btnHover').addEventListener('mouseout', function () {
+            this.style.backgroundColor = '';
+        });
+
+        // Keyboard event
+        document.getElementById('inputKey').addEventListener('keydown', function (e) {
+            console.log('Key pressed:', e.key);
+        });
+
+        // Focus event
+        document.getElementById('inputFocus').addEventListener('focus', function () {
+            this.style.borderColor = 'limegreen';
+        });
+        document.getElementById('inputFocus').addEventListener('blur', function () {
+            this.style.borderColor = '';
+        });
+    </script>
+    <script>
+        // Example: Show event properties on button click
+        document.getElementById('btnClick').addEventListener('click', function (e) {
+            console.log('Event type:', e.type);
+            console.log('Timestamp:', e.timeStamp);
+            console.log('Default prevented:', e.defaultPrevented);
+            console.log('Target:', e.target);
+            console.log('To Element:', e.toElement); // may be null for click
+            console.log('Src Element:', e.srcElement); // legacy, may be undefined
+            console.log('Current Target:', e.currentTarget);
+            console.log('ClientX:', e.clientX, 'ClientY:', e.clientY);
+            console.log('ScreenX:', e.screenX, 'ScreenY:', e.screenY);
+            console.log('TiltX:', e.tiltX); // only for pointer events
+            console.log('TiltY:', e.tiltY); // only for pointer events
+            console.log('Alt Key:', e.altKey);
+            console.log('Ctrl Key:', e.ctrlKey);
+            console.log('Shift Key:', e.shiftKey);
+            console.log('KeyCode:', e.keyCode); // only for keyboard events
+        });
+
+        // Example: Show keyboard event properties
+        document.getElementById('inputKey').addEventListener('keydown', function (e) {
+            console.log('Event type:', e.type);
+            console.log('Timestamp:', e.timeStamp);
+            console.log('Default prevented:', e.defaultPrevented);
+            console.log('Target:', e.target);
+            console.log('Current Target:', e.currentTarget);
+            console.log('Alt Key:', e.altKey);
+            console.log('Ctrl Key:', e.ctrlKey);
+            console.log('Shift Key:', e.shiftKey);
+            console.log('Key:', e.key);
+            console.log('KeyCode:', e.keyCode);
+        });
+
+        // Example: Show pointer event properties (tiltX, tiltY)
+        document.getElementById('btnHover').addEventListener('pointermove', function (e) {
+            console.log('Pointer TiltX:', e.tiltX, 'TiltY:', e.tiltY);
+        });
+    </script>
+</html>
+
+

@@ -1,29 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body style="background-color: #212121;">
-    0	UNSENT	Client has been created. open() not called yet.
-1	OPENED	open() has been called.
-2	HEADERS_RECEIVED	send() has been called, and headers and status are available.
-3	LOADING	Downloading; responseText holds partial data.
-4	DONE	The operation is complete.
-</body>
-<script>
-    const requestUrl = 'https://api.github.com/users/hiteshchoudhary'
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', requestUrl)
-    xhr.onreadystatechange = function(){
-        console.log(xhr.readyState);
-        if (xhr.readyState === 4) {
-            const data = JSON.parse(this.responseText)
-            console.log(typeof data);
-            console.log(data.followers);
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GitHub API Request | XMLHttpRequest</title>
+  <style>
+    body {
+      background-color: #212121;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      padding: 20px;
     }
+
+    h2 {
+      color: #00ffc8;
+      margin-top: 40px;
+    }
+
+    p {
+      background-color: #333;
+      padding: 10px;
+      border-radius: 6px;
+      font-size: 14px;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      background-color: #2a2a2a;
+      padding: 20px;
+      border-radius: 10px;
+      width: 300px;
+      box-shadow: 0 0 10px #00ffc8;
+    }
+
+    .profile img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+
+    .info {
+      margin: 10px 0;
+    }
+
+    .label {
+      font-weight: bold;
+      color: #ccc;
+    }
+
+    .value {
+      color: #00ffc8;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>📡 GitHub API Request (XMLHttpRequest)</h2>
+
+  <!-- ReadyState Explanation -->
+  <p>
+    <strong>ReadyState Values:</strong><br>
+    0 = UNSENT → open() not called yet<br>
+    1 = OPENED → open() has been called<br>
+    2 = HEADERS_RECEIVED → send() called, headers received<br>
+    3 = LOADING → Downloading; partial data<br>
+    4 = DONE → Full response received
+  </p>
+
+  <!-- GitHub User Card -->
+  <div class="card">
+    <div class="profile"></div>
+    <div class="info"><span class="label">Name:</span> <span class="name value"></span></div>
+    <div class="info"><span class="label">Followers:</span> <span class="followers value"></span></div>
+    <div class="info"><span class="label">Following:</span> <span class="following value"></span></div>
+  </div>
+
+  <script>
+    // 📌 GitHub API endpoint for your profile
+    const requestUrl = 'https://api.github.com/users/gouravslnk';
+
+    // DOM elements
+    const profile = document.querySelector('.profile');
+    const name = document.querySelector('.name');
+    const followers = document.querySelector('.followers');
+    const following = document.querySelector('.following');
+
+    // Create XMLHttpRequest object
+    const xhr = new XMLHttpRequest();
+
+    // Step 1: Open the request
+    xhr.open('GET', requestUrl);
+
+    // Step 2: Listen to state changes
+    xhr.onreadystatechange = function () {
+      console.log("📌 ReadyState:", xhr.readyState);
+
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          try {
+            // Step 3: Parse response text into JS object
+            const data = JSON.parse(this.responseText);
+            console.log("✅ Data Loaded:", data);
+
+            // Step 4: Populate data in DOM
+            profile.innerHTML = `<img src="${data.avatar_url}" alt="Profile Picture">`;
+            name.innerText = data.name || 'Name not available';
+            followers.innerText = data.followers || 0;
+            following.innerText = data.following || 0;
+          } catch (error) {
+            console.error('❌ JSON Parsing Error:', error);
+            profile.innerHTML = 'Error loading profile';
+          }
+        } else {
+          console.error('❌ Request Failed with status:', xhr.status);
+          profile.innerHTML = 'Failed to load profile';
+        }
+      }
+    };
+
+    // Step 5: Send the request
     xhr.send();
-</script>
+  </script>
+
+  <hr style="margin-top: 50px; border-color: #444;">
+  <h3>📌 Summary</h3>
+  <ul>
+    <li>This demo fetches your GitHub profile using <code>XMLHttpRequest</code></li>
+    <li>ReadyState values help track progress of the request</li>
+    <li>Once response is received, we parse it and inject it into the DOM</li>
+    <li>Includes fallback/error handling to avoid crashes</li>
+    <li>This is the old way — modern JS prefers <code>fetch()</code> or <code>axios</code></li>
+  </ul>
+
+</body>
 </html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Promises with DOM</title>
+  <style>
+    body {
+      background-color: #212121;
+      color: #fff;
+      font-family: sans-serif;
+      padding: 30px;
+    }
+    .status {
+      margin: 20px 0;
+      padding: 10px 15px;
+      background: #333;
+      border-radius: 8px;
+      font-size: 18px;
+      color: #00ffc8;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h2>🔁 Promise Example with DOM</h2>
+  <p>Click the button to simulate async data load using Promises:</p>
+
+  <button id="loadBtn">Load User Info</button>
+  <div class="status" id="status">⏳ Waiting...</div>
+
+  <script>
+    const statusDiv = document.getElementById("status");
+    const btn = document.getElementById("loadBtn");
+
+    btn.addEventListener("click", () => {
+      statusDiv.innerText = "⌛ Loading user info...";
+
+      const fakePromise = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          const error = Math.random() < 0.3;
+          if (error) reject("❌ Failed to fetch user!");
+          else resolve("✅ User: Gaurav Solanki");
+        }, 1500);
+      });
+
+      fakePromise
+        .then((msg) => statusDiv.innerText = msg)
+        .catch((err) => statusDiv.innerText = err)
+        .finally(() => console.log("Promise settled"));
+    });
+  </script>
+</body>
+</html>

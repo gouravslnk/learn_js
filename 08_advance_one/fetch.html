@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>03 | Fetch API - GET, POST, DELETE + GitHub Card</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: #e0e0e0;
+      font-family: Arial, sans-serif;
+      padding: 30px;
+    }
+
+    h1, h2 {
+      color: #00e6e6;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 10px 10px 20px 0;
+      background-color: #00ffc8;
+      color: #000;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #00bfa6;
+    }
+
+    .box {
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      box-shadow: 0 0 10px rgba(0, 255, 204, 0.3);
+    }
+
+    pre {
+      background-color: #2a2a2a;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin-top: 10px;
+    }
+
+    code {
+      color: #00ffcc;
+    }
+
+    .card {
+      background-color: #2a2a2a;
+      padding: 20px;
+      border-radius: 10px;
+      width: 300px;
+      box-shadow: 0 0 10px #00ffc8;
+      margin-top: 30px;
+    }
+
+    .profile img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+
+    .info {
+      margin: 8px 0;
+    }
+
+    .label {
+      font-weight: bold;
+      color: #ccc;
+    }
+
+    .value {
+      color: #00ffc8;
+    }
+
+    .log {
+      white-space: pre-wrap;
+      font-size: 14px;
+      background: #2e2e2e;
+      padding: 10px;
+      border-radius: 6px;
+      max-height: 250px;
+      overflow-y: auto;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>📡 JavaScript Fetch API — Interactive Demo</h1>
+
+  <p>
+    The <code>fetch()</code> method allows us to make network requests easily. It returns a Promise.<br>
+    Below are working examples of <strong>GET</strong>, <strong>POST</strong>, <strong>DELETE</strong>, and <strong>GitHub Profile Fetch</strong>.
+  </p>
+
+  <!-- 🎯 Buttons to trigger fetch examples -->
+  <button onclick="getPost()">GET Post</button>
+  <button onclick="createPost()">POST New Post</button>
+  <button onclick="deletePost()">DELETE Post</button>
+  <button onclick="getGitHub()">Fetch GitHub Profile</button>
+
+  <div class="log" id="log">▶ Click any button to start...</div>
+
+  <h2>👤 GitHub User Card (Using Fetch)</h2>
+  <div class="card">
+    <div class="profile" id="profile"></div>
+    <div class="info"><span class="label">Name:</span> <span id="name" class="value"></span></div>
+    <div class="info"><span class="label">Followers:</span> <span id="followers" class="value"></span></div>
+    <div class="info"><span class="label">Following:</span> <span id="following" class="value"></span></div>
+  </div>
+
+  <hr>
+  <h2>🧠 Summary of Fetch API</h2>
+  <ul>
+    <li><code>fetch(url)</code> returns a Promise.</li>
+    <li>Use <code>.then()</code> or <code>async/await</code> to handle results.</li>
+    <li>Use <code>response.json()</code> to convert response to JS object.</li>
+    <li>Always check <code>response.ok</code> before parsing.</li>
+    <li>Works with GET, POST, PUT, DELETE, etc.</li>
+  </ul>
+
+  <script>
+    const logBox = document.getElementById("log");
+
+    function logMessage(msg) {
+      logBox.innerText = msg;
+    }
+
+    // 🟢 GET Request
+    function getPost() {
+      logMessage("Fetching post...");
+      fetch('https://jsonplaceholder.typicode.com/posts/1')
+        .then(res => res.json())
+        .then(data => {
+          logMessage("✅ GET Success:\n" + JSON.stringify(data, null, 2));
+        })
+        .catch(err => {
+          logMessage("❌ GET Failed: " + err.message);
+        });
+    }
+
+    // 🟡 POST Request
+    function createPost() {
+      logMessage("Creating new post...");
+      fetch('https://jsonplaceholder.typicode.com/posts', {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json"
+        },
+        body: JSON.stringify({
+          title: "Learn JS",
+          body: "Promises and fetch!",
+          userId: 101
+        })
+      })
+        .then(res => res.json())
+        .then(data => {
+          logMessage("✅ POST Success:\n" + JSON.stringify(data, null, 2));
+        })
+        .catch(err => {
+          logMessage("❌ POST Failed: " + err.message);
+        });
+    }
+
+    // 🔴 DELETE Request
+    function deletePost() {
+      logMessage("Deleting post...");
+      fetch('https://jsonplaceholder.typicode.com/posts/1', {
+        method: "DELETE"
+      })
+        .then(response => {
+          if (response.ok) {
+            logMessage("✅ DELETE Success: Post deleted.");
+          } else {
+            throw new Error("Delete failed");
+          }
+        })
+        .catch(err => {
+          logMessage("❌ DELETE Failed: " + err.message);
+        });
+    }
+
+    // 🧑‍💻 GitHub Profile using Fetch
+    function getGitHub() {
+      logMessage("Fetching GitHub profile...");
+      fetch('https://api.github.com/users/gouravslnk')
+        .then(response => {
+          if (!response.ok) throw new Error("User not found");
+          return response.json();
+        })
+        .then(data => {
+          logMessage("✅ GitHub Profile Loaded");
+          document.getElementById("profile").innerHTML =
+            `<img src="${data.avatar_url}" alt="Profile Pic">`;
+          document.getElementById("name").innerText = data.name || "No name";
+          document.getElementById("followers").innerText = data.followers;
+          document.getElementById("following").innerText = data.following;
+        })
+        .catch(error => {
+          logMessage("❌ Error loading GitHub: " + error.message);
+        });
+    }
+  </script>
+
+</body>
+</html>

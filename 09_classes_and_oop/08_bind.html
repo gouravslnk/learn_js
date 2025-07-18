@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bind() in JS Classes</title>
+</head>
+<body>
+    <button>Click Me</button>
+</body>
+
+<script>
+    // ✅ React-like class to demonstrate binding 'this' in event handlers
+    class React {
+        constructor(){
+            // 🔹 Class properties
+            this.library = "React"
+            this.server = "https://localhost:300"
+
+            // 🧠 Without bind(), `this` inside handleClick refers to button (DOM element), not the class
+            // 🔗 bind(this) ensures that `this` inside handleClick refers to the current class instance
+            document
+                .querySelector('button')
+                .addEventListener('click', this.handleClick.bind(this))
+        }
+
+        handleClick(){
+            console.log("Button clicked ✅");
+            console.log("Server:", this.server);  // 🟢 Accessing class property using bound 'this'
+        }
+    }
+
+    // 🎬 Instantiate the class to attach the event listener
+    const app = new React()
+</script>
+
+<!-- 
+====================================================
+📝 Summary: bind() in JavaScript Classes & Events
+====================================================
+
+🔹 Why bind(this)?
+- When a class method is used as an event handler, `this` no longer refers to the class instance.
+- It usually points to the DOM element triggering the event (like a <button>).
+- Using `.bind(this)` locks the method’s `this` to the class instance.
+
+🔹 Without bind:
+- `this.server` → undefined
+- `this` → <button>
+
+🔹 With bind:
+- `this` → refers to the class instance
+- Class properties can be accessed inside the event handler
+
+🔧 Alternative (newer) syntax:
+- Use arrow function: `addEventListener('click', () => this.handleClick())`
+- Arrow functions don’t have their own `this`, so they inherit from the enclosing context (class).
+
+✅ Best Practice:
+- Always bind or use arrow functions when passing class methods as callbacks/event handlers.
+
+-->
+</html>

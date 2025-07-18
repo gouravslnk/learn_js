@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lexical Scope & Closure</title>
+</head>
+<body style="background-color: #313131;">
+    <button id="orange">Orange</button>
+    <button id="green">Green</button>
+</body>
+
+<script>
+    /* ------------------------------------
+       🔹 Lexical Scope Example
+    ------------------------------------ */
+
+    function init() {
+        let name = "john"; // variable inside outer function
+        function displayName() {
+            console.log(name); // inner function can access outer variable
+        }
+        displayName();
+    }
+    // init();
+
+    /* ------------------------------------
+       🔸 Nested Lexical Scope Example
+    ------------------------------------ */
+
+    function outer() {
+        let username = "john";
+        function inner() {
+            let secret = "secret123";
+            console.log("inner:", username); // OK: username is accessible
+        }
+
+        function innerTwo() {
+            console.log("innerTwo:", username); // OK: username still accessible
+            // console.log(secret); // ❌ secret not accessible here (not in lexical scope)
+        }
+
+        inner();
+        innerTwo();
+    }
+
+    // outer();
+    // console.log(username); // ❌ Error: username is not defined globally
+
+    /* ------------------------------------
+       🔹 Closure Example
+    ------------------------------------ */
+
+    function makeFunc() {
+        const name = "jane";
+        function displayName() {
+            console.log(name); // still has access even after makeFunc ends
+        }
+        return displayName;
+    }
+
+    const myFunc = makeFunc();
+    // myFunc(); // Outputs: jane
+
+    // A closure "remembers" the lexical scope it was created in.
+</script>
+
+<script>
+    /* -----------------------------------------
+       🧪 Practical Closure Example: Color Toggle
+    ----------------------------------------- */
+
+    // clickHandler returns a function that "remembers" the color argument
+    function clickHandler(color) {
+        return function () {
+            document.body.style.backgroundColor = `${color}`;
+        };
+    }
+
+    // Event listeners using closure to capture the color context
+    document.getElementById('orange').onclick = clickHandler("orange");
+    document.getElementById('green').onclick = clickHandler("green");
+</script>
+
+<!--
+===========================================
+📘 SUMMARY: Lexical Scope vs Closure in JS
+===========================================
+
+🔹 Lexical Scope:
+- Scope is determined at the time of writing the code (static)
+- Inner functions have access to variables in their outer functions
+
+🔸 Closure:
+- When a function is returned, it "remembers" its lexical scope
+- Closures allow functions to persist access to outer variables
+- Common in event handling, currying, async operations
+
+✅ Real Use Case:
+- The color button example: each button uses a closure to retain the color value
+
+🧠 Notes:
+- Lexical scope = how variables are resolved based on code nesting
+- Closure = function + its retained lexical environment
+
+-->
+</html>

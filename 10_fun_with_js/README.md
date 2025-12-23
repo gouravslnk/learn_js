@@ -2,7 +2,6 @@
 
 This folder covers **advanced JavaScript concepts** that make your code more efficient, elegant, and performant.
 
-## 📚 Topics Covered
 
 ### 1. **Lexical Scope and Closures** (`lexicalScope_closure.html`)
 
@@ -149,18 +148,7 @@ const packed = Array.from({length: 5}, (_, i) => i);
 - Holey arrays have overhead for hole tracking
 - SMI arrays have minimal memory footprint
 
-## 🎯 Key Learning Outcomes
-
-After completing this folder, you will understand:
-
-- ✅ **Lexical scoping** - How JavaScript resolves variable access
-- ✅ **Closures** - Creating functions with persistent state
-- ✅ **Memory management** - How closures affect memory usage
-- ✅ **Array optimization** - How V8 optimizes different array types
-- ✅ **Performance patterns** - Writing efficient array code
-- ✅ **Best practices** - Avoiding common performance pitfalls
-
-## 💡 Advanced Patterns
+##  Advanced Patterns
 
 **Closure Patterns:**
 
@@ -200,7 +188,7 @@ function createButtonHandler(name) {
 }
 ```
 
-## 🔗 Real-world Applications
+##  Real-world Applications
 
 **Closures are essential for:**
 - React hooks and state management

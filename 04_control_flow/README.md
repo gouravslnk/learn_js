@@ -2,7 +2,7 @@
 
 This folder covers **Control Flow** - the fundamental concepts for making decisions and controlling program execution in JavaScript.
 
-## 📚 Topics Covered
+## Topics Covered
 
 ### 1. **Conditional Statements** (`one.js`)
 
@@ -109,18 +109,7 @@ switch (variable) {
 - Conditional assignment
 - Inline conditional rendering
 
-## 🎯 Key Learning Outcomes
-
-After completing this folder, you will understand:
-
-- ✅ **Decision making** - Using conditions to control code flow
-- ✅ **Comparison operators** - Different ways to compare values
-- ✅ **Logical operators** - Combining multiple conditions
-- ✅ **Switch statements** - Clean alternative to multiple if-else
-- ✅ **Truthiness** - How JavaScript evaluates values as true/false
-- ✅ **Best practices** - When to use each control flow structure
-
-## 💡 Best Practices
+##  Best Practices
 
 **Conditional Statements:**
 - Use `===` instead of `==` for comparisons
@@ -140,7 +129,7 @@ After completing this folder, you will understand:
 - Use `Object.keys(obj).length === 0` for empty objects
 - Understand the difference between `null`, `undefined`, and empty values
 
-## 🔗 Real-world Applications
+##  Real-world Applications
 
 **Control flow is essential for:**
 - User authentication (logged in/out states)

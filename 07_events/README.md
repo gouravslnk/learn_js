@@ -2,7 +2,7 @@
 
 This folder covers **Events and Asynchronous JavaScript** - essential for creating interactive and responsive web applications.
 
-## 📚 Topics Covered
+## Topics Covered
 
 ### 1. **Event Basics** (`01_eventsBasics.html`)
 
@@ -154,18 +154,7 @@ clearInterval(intervalId); // Stops the interval
 - Event loop coordination between different queues
 - Priority differences between callback and microtask queues
 
-## 🎯 Key Learning Outcomes
-
-After completing this folder, you will understand:
-
-- ✅ **Event handling** - Different ways to respond to user interactions
-- ✅ **Event delegation** - Efficient event management patterns
-- ✅ **Async fundamentals** - How JavaScript handles non-blocking operations
-- ✅ **Timers** - setTimeout and setInterval for delayed/repeated execution
-- ✅ **Event loop** - How JavaScript coordinates async operations
-- ✅ **Performance** - Memory management and cleanup practices
-
-## 💡 Best Practices
+## Best Practices
 
 **Event Handling:**
 - Use `addEventListener()` for flexibility and multiple listeners
@@ -185,7 +174,7 @@ After completing this folder, you will understand:
 - Use passive event listeners for better scroll performance
 - Clean up resources in component unmounting
 
-## 🔗 Real-world Applications
+## Real-world Applications
 
 **Events are essential for:**
 - Form validation and submission

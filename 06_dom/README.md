@@ -2,7 +2,7 @@
 
 This folder covers **DOM (Document Object Model)** manipulation - the foundation for creating interactive web pages and dynamic user interfaces.
 
-## 📚 Topics Covered
+## Topics Covered
 
 ### 1. **DOM Basics Summary** (`01_dom_basics_summary.js` + `01_dom_basics_summary.html`)
 
@@ -112,20 +112,7 @@ This folder covers **DOM (Document Object Model)** manipulation - the foundation
 - Conditional element visibility
 - Real-time data display
 
-## 🎯 Key Learning Outcomes
-
-After completing this folder, you will understand:
-
-- ✅ **DOM structure** - How HTML becomes objects in JavaScript
-- ✅ **Element selection** - Different ways to find elements
-- ✅ **Content manipulation** - Changing text and HTML content
-- ✅ **Style changes** - Modifying CSS properties dynamically
-- ✅ **DOM navigation** - Moving through parent/child/sibling relationships
-- ✅ **Element creation** - Adding new elements to pages
-- ✅ **Element removal** - Deleting elements from pages
-- ✅ **Attribute manipulation** - Working with HTML attributes
-
-## 💡 Best Practices
+##  Best Practices
 
 **Element Selection:**
 - Use `getElementById()` for unique elements
@@ -150,7 +137,7 @@ After completing this folder, you will understand:
 - Use `remove()` instead of `removeChild()` when possible
 - Use `prepend()`/`append()` instead of `appendChild()` for flexibility
 
-## 🔗 Real-world Applications
+##  Real-world Applications
 
 **DOM manipulation is essential for:**
 - Form validation and user feedback
@@ -161,7 +148,7 @@ After completing this folder, you will understand:
 - Shopping cart functionality
 - Single Page Applications (SPAs)
 
-## 🛡️ Security Considerations
+##  Security Considerations
 
 **XSS Prevention:**
 - Never insert untrusted content with `innerHTML`

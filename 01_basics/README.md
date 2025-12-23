@@ -2,7 +2,7 @@
 
 This folder covers the **fundamental concepts** of JavaScript programming language. These are the building blocks you need to understand before moving to advanced topics.
 
-## 📚 Topics Covered
+##  Topics Covered
 
 ### 1. **Variables and Constants** (`01_variables.js`)
 - Variable declaration with `let`, `var`, and `const`
@@ -89,25 +89,3 @@ This folder covers the **fundamental concepts** of JavaScript programming langua
 - **Symbol** data type and its uniqueness
 - **BigInt** for large numbers
 - Type checking with `typeof`
-
-## 🎯 Key Learning Outcomes
-
-After completing this folder, you will understand:
-
-- ✅ How to declare and use variables properly
-- ✅ All JavaScript data types and when to use them
-- ✅ Type conversion and common gotchas
-- ✅ How to compare values correctly
-- ✅ String manipulation and formatting
-- ✅ Working with numbers and mathematical operations
-- ✅ Date handling and formatting
-- ✅ Memory concepts (primitive vs reference types)
-
-## 💡 Tips for Revision
-
-1. **Practice variable declarations** - Try using `let`, `const`, and understand why `var` is avoided
-2. **Experiment with type conversions** - See what happens when you convert different types
-3. **Master string methods** - These are used frequently in real projects
-4. **Understand comparison operators** - Know when to use `==` vs `===`
-5. **Practice with Math.random()** - Very useful for creating dynamic applications
-

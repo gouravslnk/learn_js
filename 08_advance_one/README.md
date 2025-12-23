@@ -2,7 +2,6 @@
 
 This folder covers **Advanced JavaScript concepts** including Promises, Fetch API, and modern asynchronous programming patterns.
 
-## 📚 Topics Covered
 
 ### 1. **Promises** (`promises.js` + `promises.html`)
 
@@ -191,18 +190,7 @@ async function fetchUserData() {
 }
 ```
 
-## 🎯 Key Learning Outcomes
-
-After completing this folder, you will understand:
-
-- ✅ **Promise fundamentals** - Creation, consumption, and chaining
-- ✅ **Async/await syntax** - Modern way to handle asynchronous code
-- ✅ **Fetch API** - Making HTTP requests to APIs
-- ✅ **Error handling** - Proper error management in async code
-- ✅ **Promise utilities** - Promise.all, Promise.race, etc.
-- ✅ **Real-world patterns** - Common async programming patterns
-
-## 💡 Best Practices
+## Best Practices
 
 **Promise Handling:**
 - Always handle both success and error cases
@@ -228,7 +216,7 @@ After completing this folder, you will understand:
 - Use Promise.all() for concurrent requests
 - Consider request throttling for user inputs
 
-## 🔗 Real-world Applications
+## Real-world Applications
 
 **Promises and Fetch are essential for:**
 - Single Page Applications (SPAs)

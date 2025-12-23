@@ -2,7 +2,7 @@
 
 This folder covers **Functions and Scope** - crucial concepts for writing reusable, organized, and efficient JavaScript code.
 
-## 📚 Topics Covered
+##  Topics Covered
 
 ### 1. **Functions** (`01_functions.js`)
 
@@ -127,19 +127,7 @@ const add = (a, b) => a + b;
 - Stack overflow and recursion limits
 - Debugging with call stack
 
-## 🎯 Key Learning Outcomes
-
-After completing this folder, you will understand:
-
-- ✅ **Function creation** - Multiple ways to define functions
-- ✅ **Function parameters** - Default values, rest parameters
-- ✅ **Scope rules** - Global, function, and block scope
-- ✅ **Arrow functions** - Modern syntax and `this` behavior
-- ✅ **IIFE pattern** - Private scope and immediate execution
-- ✅ **Code execution** - How JavaScript runs your code
-- ✅ **Best practices** - When to use different function types
-
-## 💡 Important Concepts
+##  Important Concepts
 
 **Function Best Practices:**
 - Use descriptive function names
@@ -159,7 +147,7 @@ After completing this folder, you will understand:
 - Great for array methods (`map`, `filter`, `reduce`)
 - Remember they don't have their own `this`
 
-## 🔗 Real-world Applications
+##  Real-world Applications
 
 **Functions are used for:**
 - Event handlers in web development

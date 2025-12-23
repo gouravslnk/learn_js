@@ -2,7 +2,6 @@
 
 This folder covers **Object-Oriented Programming (OOP)** in JavaScript, including classes, inheritance, prototypes, and design patterns.
 
-## 📚 Topics Covered
 
 ### 1. **OOP Fundamentals** (`01_oops.js`)
 
@@ -279,19 +278,7 @@ const user = {
 - Observer pattern
 - Module pattern
 
-## 🎯 Key Learning Outcomes
-
-After completing this folder, you will understand:
-
-- ✅ **OOP principles** - Encapsulation, inheritance, polymorphism
-- ✅ **Class creation** - Constructor functions and ES6 classes
-- ✅ **Prototype system** - How JavaScript inheritance really works
-- ✅ **Context control** - call, apply, bind methods
-- ✅ **Inheritance patterns** - Extending classes and sharing functionality
-- ✅ **Property control** - Getters, setters, and property descriptors
-- ✅ **Static members** - Class-level methods and properties
-
-## 💡 Best Practices
+##  Best Practices
 
 **Class Design:**
 - Use meaningful class and method names
@@ -314,8 +301,8 @@ After completing this folder, you will understand:
 - Use arrow functions to preserve `this` context
 - Use bind() for event handlers in classes
 - Understand when `this` changes context
-
-## 🔗 Real-world Applications
+  
+##  Real-world Applications
 
 **OOP is essential for:**
 - Large-scale application architecture

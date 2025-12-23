@@ -2,7 +2,7 @@
 
 This folder covers **Loops and Iterations** - essential for repeating code execution and working with collections of data efficiently.
 
-## 📚 Topics Covered
+## Topics Covered
 
 ### 1. **For Loops** (`01_for_loop.js`)
 
@@ -215,18 +215,7 @@ const result = array.reduce((accumulator, current) => {
 - Creating lookup objects
 - Complex data transformations
 
-## 🎯 Key Learning Outcomes
-
-After completing this folder, you will understand:
-
-- ✅ **Loop types** - When to use each type of loop
-- ✅ **Array iteration** - Different ways to process arrays
-- ✅ **Higher-order functions** - Functions that take other functions
-- ✅ **Functional programming** - Declarative vs imperative approaches
-- ✅ **Method chaining** - Combining array methods for complex operations
-- ✅ **Performance** - Understanding efficiency of different approaches
-
-## 💡 Best Practices
+##  Best Practices
 
 **Choosing the Right Loop:**
 - **for** - When you need index control or complex conditions
@@ -243,7 +232,7 @@ After completing this folder, you will understand:
 - Avoid nested loops when possible
 - Consider algorithmic complexity (O(n), O(n²), etc.)
 
-## 🔗 Real-world Applications
+##  Real-world Applications
 
 **Loops are essential for:**
 - Processing user data and form inputs
